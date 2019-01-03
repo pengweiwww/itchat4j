@@ -3,6 +3,7 @@ package cn.zhouyafeng.itchat4j.core;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 
+import cn.zhouyafeng.itchat4j.Wechat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -106,7 +107,10 @@ public class MsgCenter {
 			} else {
 				LOG.info("Useless msg");
 			}
-			LOG.info("收到消息一条，来自: " + m.getString("FromUserName"));
+			LOG.info("----------------收到消息一条，来自: " + m.getString("FromUserName"));
+			if(Wechat.DEBUG){
+				LOG.info(m.toJSONString());
+			}
 			result.add(m);
 		}
 		return result;
